@@ -1,0 +1,23 @@
+{
+  "name": "investor-token-bonus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeBeavers/investor-token-bonus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeBeavers/investor-token-bonus/issues"
+  },
+  "homepage": "https://github.com/CodeBeavers/investor-token-bonus#readme",
+  "dependencies": {
+    "bignumber.js": "^6.0.0",
+    "web3": "^0.20.4"
+  }
+}
