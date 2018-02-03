@@ -28,7 +28,7 @@ for(let investorIndex = 0; investorIndex < investorsCount; investorIndex ++){
 
 beneficiaries.forEach(beneficiary => {
         let bonus = beneficiary.balance.mul(etherBonus);
-        beneficiary.bonus = bonus.div(tokensInMarket);
+        beneficiary.bonus = bonus.div(tokensInMarket).toFixed(0);
 });
 
 //or send ether as bonus
