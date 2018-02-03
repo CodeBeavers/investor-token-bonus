@@ -2,7 +2,7 @@ const Web3 = require('web3');
 const config = require("./config.js");
 const BigNumber = require('bignumber.js');
 
-const etherBonus = new BigNumber(config.etherForBonus).mul(10**18);
+const etherBonus = new BigNumber(config.etherForBonus).times(10**18);
 
 const web3 = new Web3(new Web3.providers.HttpProvider(config.ethereumNodeAddress));
 const tokenContract =  web3.eth.contract(config.tokenAbi).at(config.tokenAddress);
@@ -12,13 +12,13 @@ let investorsCount = tokenContract.tokenHoldersCount.call({}, latestBlockNumber)
 let tokenOwner = tokenContract.owner.call();
 
 let beneficiaries = [];
-let tokensInMarket = new BigNumber();
-for(let investorIndex = 0; investorIndex < investorsCount; investorIndex ++){
+let tokensInMarket = new BigNumber(0);
+for(let investorIndex = 0; investorIndex < investorsCount.valueOf(); investorIndex ++){
     let investorAddress = tokenContract.indexedTokenHolders.call(investorIndex, {}, latestBlockNumber);
     let balance = tokenContract.balanceOf.call(investorAddress, {}, latestBlockNumber);
 
     if(balance.gt(0) && investorAddress !== tokenOwner){
-        tokensInMarket = tokensInMarket.add(balance);
+        tokensInMarket = tokensInMarket.plus(balance);
         beneficiaries.push({
             address : investorAddress,
             balance : balance
